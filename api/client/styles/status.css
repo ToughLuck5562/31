@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand';
+  } 
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  h1 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+  }
+
+  .status-container {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .status-message {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+
+  .status-message:nth-child(1) { animation-delay: 0.2s; }
+  .status-message:nth-child(2) { animation-delay: 0.4s; }
+  .status-message:nth-child(3) { animation-delay: 0.6s; }
+
+  .status-time {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 5px;
+  }
+
+  .status-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .status-description {
+    font-size: 1em;
+    line-height: 1.4;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }

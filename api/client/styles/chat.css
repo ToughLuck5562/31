@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand';
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  body::-webkit-scrollbar {
+    visibility: hidden;
+  }
+  .chat-container {
+    width: 100%;
+    max-width: 400px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInContainer 0.8s forwards;
+  }
+  .chat-messages {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start;   
+    overflow-y: auto;
+}
+  .chat-messages::-webkit-scrollbar {
+    width: 10px;
+  }
+  .message {
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInMessage 0.5s forwards;
+  }
+
+  .message.user .text {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+
+  .message.ai .text {
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+
+  .dislike-button {
+    color: #333;
+    padding: 3px 5px;
+    border: 1px solid #333;
+    background: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: ease-in-out 388ms;
+    font-weight: normal;
+    margin-top: 5px;
+    font-size: x-small;
+  }
+
+  .dislike-button:hover {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.2);
+    font-size: x-small;
+  }
+
+  .dislike-button:disabled {
+    visibility: hidden;
+  }
+
+  .input-area {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    margin-top: auto; 
+  }
+  .input-area input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #fff;
+    color: #333;
+  }
+  .input-area button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .input-area button:hover {
+    background-color: #555;
+  }
+
+  @keyframes fadeInContainer {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes fadeInMessage {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
